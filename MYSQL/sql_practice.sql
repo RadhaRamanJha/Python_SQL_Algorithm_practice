@@ -1,6 +1,6 @@
 ## Hacker Rank Problems
 
-## 29-04-2024
+
 -- Advanced Select
 /* Problem 1 :- Generate folowing result sets :- 
 1. Query an alphabetically order list of names in occupation immediatlty followed by first letter of profession in parenticals

@@ -29,3 +29,21 @@ def miniMaxSum(arr):
             max_num = num
     
     print(f'{sum-max_num} {sum-min_num}')
+
+# Conversion time from 12 hour format to 24 hour format
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+
+def timeConversion(s):
+    if s[8:] == 'PM':
+        if int(s[:2]) == 12:
+            res_hr = str(12)
+        else:
+            res_hr = str(int(s[:2])+12)
+    elif s[8:] == 'AM':
+        if int(s[:2]) == 12:
+            res_hr = str(00)
+        else:
+            res_hr = s[:2]
+    res = res_hr+s[2:8]
+    return res
