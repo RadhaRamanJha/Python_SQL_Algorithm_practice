@@ -1,4 +1,56 @@
-## Hacker Rank Problems
+-- Aggregation
+/*
+Q1. Table: Cinema
+
++----------------+----------+
+| Column Name    | Type     |
++----------------+----------+
+| id             | int      |
+| movie          | varchar  |
+| description    | varchar  |
+| rating         | float    |
++----------------+----------+
+id is the primary key (column with unique values) for this table.
+Each row contains information about the name of a movie, its genre, and its rating.
+rating is a 2 decimal places float in the range [0, 10]
+ 
+
+Write a solution to report the movies with an odd-numbered ID and a description that is not "boring".
+
+Return the result table ordered by rating in descending order.
+*/
+SELECT 
+    *
+FROM
+    cinema
+WHERE
+    (id % 2 != 0)
+        AND (description != 'boring')
+ORDER BY rating DESC;
+
+/*
+Table: Teacher
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| teacher_id  | int  |
+| subject_id  | int  |
+| dept_id     | int  |
++-------------+------+
+(subject_id, dept_id) is the primary key (combinations of columns with unique values) of this table.
+Each row in this table indicates that the teacher with teacher_id teaches the subject subject_id in the department dept_id.
+ 
+
+Write a solution to calculate the number of unique subjects each teacher teaches in the university.
+
+Return the result table in any order.
+*/
+SELECT 
+    teacher_id, COUNT(DISTINCT subject_id) AS cnt
+FROM
+    teacher
+GROUP BY teacher_id;
 
 
 -- Advanced Select
