@@ -52,6 +52,58 @@ FROM
     teacher
 GROUP BY teacher_id;
 
+-- Aggregation with CTE to include all cases
+
+/*
+Table: Prices
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| product_id    | int     |
+| start_date    | date    |
+| end_date      | date    |
+| price         | int     |
++---------------+---------+
+(product_id, start_date, end_date) is the primary key (combination of columns with unique values) for this table.
+Each row of this table indicates the price of the product_id in the period from start_date to end_date.
+For each product_id there will be no two overlapping periods. That means there will be no two intersecting periods for the same product_id.
+ 
+
+Table: UnitsSold
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| product_id    | int     |
+| purchase_date | date    |
+| units         | int     |
++---------------+---------+
+This table may contain duplicate rows.
+Each row of this table indicates the date, units, and product_id of each product sold. 
+ 
+
+Write a solution to find the average selling price for each product. average_price should be rounded to 2 decimal places.
+
+Return the result table in any order.
+*/
+
+with pur as (
+select a.product_id, round(sum(b.units*a.price)/sum(b.units),2) as average_price
+from Prices a
+inner join  UnitsSold b on
+a.product_id = b.product_id
+where b.purchase_date between a.start_date and a.end_date
+group by a.product_id
+)
+select * from pur
+union all
+select a.product_id,0 as average_price
+from Prices a
+left join  UnitsSold b on
+a.product_id = b.product_id
+where a.product_id not in (select product_id from UnitsSold);
+
 /* ################ Basic Joins ###################################
 Table: Weather
 
