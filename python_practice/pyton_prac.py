@@ -100,3 +100,29 @@ def pattern_H(n:int): # n must be Odd number only .
         print(((c*(thickness-i-1)).rjust(thickness)+c+(c*(thickness-i-1)).ljust(thickness)).rjust(thickness*6))
 
 pattern_H(7)
+
+"""
+You are given a string .
+Your task is to find out if the string  contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
+
+Input Format
+
+A single line containing a string
+
+
+Output Format
+
+In the first line, print True if  has any alphanumeric characters. Otherwise, print False.
+In the second line, print True if  has any alphabetical characters. Otherwise, print False.
+In the third line, print True if  has any digits. Otherwise, print False.
+In the fourth line, print True if  has any lowercase characters. Otherwise, print False.
+In the fifth line, print True if  has any uppercase characters. Otherwise, print False.
+"""
+def string_val():
+    s = input()
+    a = any(x.isalnum() for x in s)
+    b = any(x.isalpha() for x in s)
+    c = any(x.isdigit() for x in s)
+    d = any(x.islower() for x in s)
+    e = any(x.isupper() for x in s)
+    print(f"{a}\n{b}\n{c}\n{d}\n{e}")
