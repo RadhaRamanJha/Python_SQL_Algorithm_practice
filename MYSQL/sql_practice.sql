@@ -103,7 +103,77 @@ from Prices a
 left join  UnitsSold b on
 a.product_id = b.product_id
 where a.product_id not in (select product_id from UnitsSold);
+/* ################### Aggregate functions ##########################
+1075. Project Employees I
+Table: Project
 
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| project_id  | int     |
+| employee_id | int     |
++-------------+---------+
+(project_id, employee_id) is the primary key of this table.
+employee_id is a foreign key to Employee table.
+Each row of this table indicates that the employee with employee_id is working on the project with project_id.
+ 
+
+Table: Employee
+
++------------------+---------+
+| Column Name      | Type    |
++------------------+---------+
+| employee_id      | int     |
+| name             | varchar |
+| experience_years | int     |
++------------------+---------+
+employee_id is the primary key of this table. It's guaranteed that experience_years is not NULL.
+Each row of this table contains information about one employee.
+ 
+
+Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits.
+
+Return the result table in any order.
+*/
+SELECT 
+    p.project_id,
+    ROUND(AVG(e.experience_years), 2) average_years
+FROM
+    project p
+        INNER JOIN
+    employee e ON p.employee_id = e.employee_id
+GROUP BY p.project_id;
+
+/* ############### Sorting and Grouping ############
+1141. User Activity for the Past 30 Days I
+Table: Activity
+
++---------------+---------+
+| Column Name   | Type    |
++---------------+---------+
+| user_id       | int     |
+| session_id    | int     |
+| activity_date | date    |
+| activity_type | enum    |
++---------------+---------+
+This table may have duplicate rows.
+The activity_type column is an ENUM (category) of type ('open_session', 'end_session', 'scroll_down', 'send_message').
+The table shows the user activities for a social media website. 
+Note that each session belongs to exactly one user.
+ 
+
+Write a solution to find the daily active user count for a period of 30 days ending 2019-07-27 inclusively. A user was active on someday if they made at least one activity on that day.
+
+Return the result table in any order.
+*/
+SELECT 
+    activity_date AS day,
+    COUNT(DISTINCT user_id) AS active_users
+FROM
+    Activity
+WHERE
+    activity_date BETWEEN '2019-06-28' AND '2019-07-28'
+GROUP BY activity_date;
 /* ################ Basic Joins ###################################
 Table: Weather
 
