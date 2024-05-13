@@ -51,18 +51,9 @@ def timeConversion(s):
 """ Lonely element
 Given an array of element all elements repeats except one 
     return the element"""
-import math
-import os
-import random
-import re
-import sys
 
-#
-# Complete the 'lonelyinteger' function below.
-#
 # The function is expected to return an INTEGER.
 # The function accepts INTEGER_ARRAY a as parameter.
-#
 def lonelyinteger(a):
 
     ## Time Complexity :- O(N), Space Complexity - O(N) using sets
@@ -81,15 +72,19 @@ def lonelyinteger(a):
         res ^= num
     return res
 
-if __name__ == '__main__':
-    fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
-    n = int(input().strip())
+""" Diagonal difference
+Given an 2D-array of element return the absolute 
+difference of its left diagonal and right diagonal"""
 
-    a = list(map(int, input().rstrip().split()))
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
 
-    result = lonelyinteger(a)
-
-    fptr.write(str(result) + '\n')
-
-    fptr.close()
+def diagonalDifference(arr):
+    LDS = 0
+    RDS = 0
+    for i in range(len(arr)):
+        LDS += arr[i][i]
+        RDS += arr[i][len(arr)-1-i]
+    return abs(LDS - RDS)
