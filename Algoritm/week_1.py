@@ -63,8 +63,19 @@ import sys
 # The function is expected to return an INTEGER.
 # The function accepts INTEGER_ARRAY a as parameter.
 #
-
 def lonelyinteger(a):
+
+    ## Time Complexity :- O(N), Space Complexity - O(N) using sets
+    res = set()
+    for num in a:
+        if num in res:
+            res.discard(num)
+        else:
+            res.add(num)
+    for num in res:
+        return num
+    
+    ## Time Complexity :- O(N), Space Complexity - O(1) using XOR operator
     res = 0
     for num in a:
         res ^= num
