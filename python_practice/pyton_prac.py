@@ -126,3 +126,40 @@ def string_val():
     d = any(x.islower() for x in s)
     e = any(x.isupper() for x in s)
     print(f"{a}\n{b}\n{c}\n{d}\n{e}")
+
+"""
+Given the names and grades for each student in a class of  students, store them in a nested list and print the name(s) of any student(s) having the second lowest grade.
+
+Note: If there are multiple students with the second lowest grade, order their names alphabetically and print each name on a new line.
+Input Format
+
+The first line contains an integer, N , the number of students.
+The 2N subsequent lines describe each student over  lines.
+- The first line contains a student's name.
+- The second line contains their grade.
+
+Output Format
+
+Print the name(s) of any student(s) having the second lowest grade in. If there are multiple students, order their names alphabetically and print each one on a new line.
+"""
+score_list=[]   # empty list to store scores
+records=[]      # empty list of lists to store scorers and scores
+name_list=[]    # empty list to store scorers
+
+# Take name and score inputs from user
+for _ in range(int(input())):
+    name = input()
+    score = float(input())
+    score_list.append(score)
+    records.append([name, score])
+
+unique_scores=list(set(score_list))
+unique_scores.sort()  # Sort the list of unique scores
+
+for name, score in records:
+    if score==unique_scores[1]:
+        name_list.append(name)
+
+name_list.sort()  # Sort the name list of scorers
+for name in name_list:
+    print(name)
