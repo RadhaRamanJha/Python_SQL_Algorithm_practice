@@ -88,3 +88,24 @@ def diagonalDifference(arr):
         LDS += arr[i][i]
         RDS += arr[i][len(arr)-1-i]
     return abs(LDS - RDS)
+
+
+# The function is expected to return a Encryptred STRING.
+# The function accepts following parameters:
+#  1. STRING s
+#  2. INTEGER k
+#
+
+def caesarCipher(s, k):
+    result = ""
+    for i in range(len(s)):
+        char = s[i]
+        if char.isupper():
+            result += chr((ord(char)+k - 65)% 26 + 65)
+            # as we the character to loop between A to Z
+        elif char.islower():
+            result += chr((ord(char)+k - 97)% 26 + 97)
+            # as we the character to loop between a to z
+        else:
+            result += char
+    return result
