@@ -109,3 +109,39 @@ def caesarCipher(s, k):
         else:
             result += char
     return result
+
+## Plaindrome index 
+## Return the index by removing which the string is converted to palindrom 
+def palindromeIndex(s):
+    n, state, answer = len(s), True, -1
+    SI, EI = 0, n-1
+    while state:
+        if (s[SI] == s[EI]):
+            SI += 1
+            EI -= 1
+        elif (s[SI] != s[EI]):
+            if (s[SI+1] == s[EI]):
+                answer = SI
+                state = False
+            elif (s[SI] == s[EI-1]):
+                answer = EI
+                state = False
+        if ((SI == n//2) or (EI == n//2)):
+            state = False
+    return answer
+
+## Is the given grid of strings when sorted row wise
+## is sorted column wise as well
+
+def gridChallenge(grid):
+    string_num = len(grid)
+    string_len = len(grid[0])
+    sorted_grid = []
+    for i in range(0, string_num):
+        sorted_chars = sorted(grid[i])
+        sorted_grid.append(sorted_chars)
+    for i in range(0, string_num-1):
+        for j in range(0, string_len):
+            if sorted_grid[i][j] > sorted_grid[i+1][j]:
+                return 'NO'
+    return 'YES'
