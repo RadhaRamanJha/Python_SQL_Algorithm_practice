@@ -145,3 +145,28 @@ def gridChallenge(grid):
             if sorted_grid[i][j] > sorted_grid[i+1][j]:
                 return 'NO'
     return 'YES'
+
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. STRING n
+#  2. INTEGER k
+# e.g :- 
+    # superDigit(p) = superDigit(9875987598759875)
+    #               9+8+7+5+9+8+7+5+9+8+7+5+9+8+7+5 = 116
+    # superDigit(p) = superDigit(116)
+    #               1+1+6 = 8
+    # superDigit(p) = superDigit(8)
+
+def superDigit(n, k):
+    temp = 0
+    for char in n:
+        temp += int(char)
+    p = temp*k
+    if (len(str(p)) == 1):
+        return p
+    else:
+        if p % 9 == 0:
+            return 9
+        else:
+            return p % 9
+        
