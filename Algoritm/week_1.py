@@ -169,4 +169,20 @@ def superDigit(n, k):
             return 9
         else:
             return p % 9
-        
+# problem involves determining the minimum number of bribes required to transform a queue of people into its current state,
+# where each person can bribe at most two others to move ahead.
+# If any person has moved more than two positions forward, the situation is deemed "Too chaotic"
+def minimumBribes(q):
+    bribes = 0
+    for i in range(len(q)-1, 0, -1):
+        if q[i] != i+1:
+            if q[i-1] == i+1:
+                bribes += 1
+                q[i-1], q[i] = q[i], q[i-1]
+            elif q[i-2] == i+1:
+                bribes += 2
+                q[i-2], q[i-1], q[i] = q[i-1], q[i], q[i-2]
+            else:
+                print("Too chaotic")
+                return
+    print(bribes)
