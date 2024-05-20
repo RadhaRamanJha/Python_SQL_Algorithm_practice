@@ -260,3 +260,12 @@ def isBalanced(s):
             else:
                 return 'NO'
     return 'NO' if opened_brackets else 'YES'
+# Given an array of integers and a target value, determine the number of pairs of array elements that have a difference equal to the target value. 
+# You need to implement a function pairs that takes in an integer k (the target difference) and an array of integers arr, and returns the number of pairs that satisfy the condition.
+
+def pairs(k, arr):
+    num_set, count = set(arr), 0
+    for num in arr:
+        if num+k in num_set:
+            count += 1
+    return count
