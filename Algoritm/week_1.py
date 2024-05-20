@@ -222,3 +222,22 @@ def mergeLists(head1, head2):
         temp = head2
         temp.next = mergeLists(head1, head2.next)
     return temp
+
+# Implement a queue using two stacks and process a series of queries:
+
+# Enqueue an element into the queue.
+# Dequeue the front element from the queue.
+# Print the front element of the queue.
+# Each query will be one of these three types, provided with relevant values if necessary.
+
+q = int(input())
+stack_push = []
+stack_delete = []
+for i in range(q):
+    i = list(input().split())
+    if i[0] == '1':
+        stack_push.append(i[1])
+    elif i[0] == '2':
+        popped_item = stack_push.pop(0)
+    elif i[0] == '3':
+        print(stack_push[0])
