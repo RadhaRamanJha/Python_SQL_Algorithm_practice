@@ -199,3 +199,26 @@ def truckTour(petrolpumps):
             start_position = i+1
             fuel = 0
     return start_position
+
+# Given pointers to the heads of two sorted linked lists, merge them into a single, sorted linked list. 
+# Complete the mergeLists function, which returns a pointer to the head of the merged list. The function should handle cases where either or both input lists are empty.
+
+
+def mergeLists(head1, head2):
+    # case when both head point null
+    if head1 is None and head2 is None:
+        return None
+    # case when one head points to null
+    if head1 is None:
+        return head2
+    elif head2 is None:
+        return head1
+    # General case
+    if head1.data < head2.data:
+        temp = head1
+        temp.next = mergeLists(head1.next, head2)
+    # if both head data are equal the mutual order in which they appear doesnot matter
+    else:
+        temp = head2
+        temp.next = mergeLists(head1, head2.next)
+    return temp
