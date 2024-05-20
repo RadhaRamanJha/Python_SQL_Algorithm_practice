@@ -241,3 +241,22 @@ for i in range(q):
         popped_item = stack_push.pop(0)
     elif i[0] == '3':
         print(stack_push[0])
+
+# Given a string of brackets among ('(' , ')', '{', '}', '[', ']'), determine if it is balanced. 
+# A sequence is balanced if each opening bracket has a corresponding closing bracket in the correct order.
+# Implement the function isBalanced to return YES or NO
+
+def isBalanced(s):
+    opened_brackets = []
+    closing_brackets = {'(': ')', '{': '}', '[': ']'}
+    for char in s:
+        if char in ['(', '{', '[']:
+            opened_brackets.append(char)
+        else:
+            if opened_brackets:
+                current_bracket = opened_brackets.pop()
+                if closing_brackets[current_bracket] != char:
+                    return 'NO'
+            else:
+                return 'NO'
+    return 'NO' if opened_brackets else 'YES'
