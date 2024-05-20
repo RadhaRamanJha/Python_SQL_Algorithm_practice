@@ -186,3 +186,16 @@ def minimumBribes(q):
                 print("Too chaotic")
                 return
     print(bribes)
+
+# determining the starting petrol pump index from which a truck can complete a circular tour of petrol pumps. 
+# Each pump provides a certain amount of petrol and the truck consumes a certain amount of petrol to travel to the next pump. 
+# The goal is to find the starting pump index where the truck can complete the entire tour without running out of petrol.
+
+def truckTour(petrolpumps):
+    start_position, fuel = 0, 0
+    for i in range(len(petrolpumps)):
+        fuel += petrolpumps[i][0] - petrolpumps[i][1]
+        if fuel <= 0:
+            start_position = i+1
+            fuel = 0
+    return start_position
