@@ -269,3 +269,23 @@ def pairs(k, arr):
         if num+k in num_set:
             count += 1
     return count
+
+# Implement a simple text editor that starts with an empty string and supports four operations: 
+# 1. append a string to the end, 2. delete the last k characters, 3. print the k-th character, and 4. undo the last append or delete operation. 
+# Perform a series of these operations as specified in the input and produce the necessary outputs.
+
+stack = []  # stack to store state of string before any modification
+S = ""  # Start with an empty string
+for _ in range(int(input())):
+    k = input().split()
+    
+    if k[0] == '1':
+        stack.append(S)
+        S += k[1]
+    elif k[0] == '2':
+        stack.append(S)
+        S = S[:-int(k[1])]
+    elif k[0] == '3':
+        print(S[int(k[1])-1])
+    else:
+        S = stack.pop()
