@@ -289,3 +289,21 @@ for _ in range(int(input())):
         print(S[int(k[1])-1])
     else:
         S = stack.pop()
+# Given an array of cookies with various sweetness levels, determine the minimum number of operations required to ensure all cookies have a sweetness greater than or equal to a specified value, 𝑘
+# In each operation, combine the two least sweet cookies to create a new cookie with sweetness equal to the sum of the smallest cookie's sweetness and twice the second smallest's sweetness. If it is not possible, return -1.
+from heapq import heapify, heappop, heappush
+
+def cookies(k, A):
+    heapify(A)
+    result = 0
+    while True:
+        x = heappop(A)
+        if x >= k:
+            return result
+        if A:
+            y = heappop(A)
+            new = x+2*y
+            heappush(A, new)
+            result += 1
+        else:
+            return -1
