@@ -163,3 +163,21 @@ for name, score in records:
 name_list.sort()  # Sort the name list of scorers
 for name in name_list:
     print(name)
+
+"""
+Given an integer n, print each integer from 1 to n in decimal, 
+octal, hexadecimal (capitalized), and binary formats. 
+Each value should be space-padded to align with the width of the binary representation of n.
+"""
+
+def print_formatted(number):
+    width = len(bin(number))-2
+    for i in range(1, number+1):
+        print(str(i).rjust(width), end=" ")
+        print(oct(i)[2:].rjust(width), end=" ")
+        print(hex(i)[2:].upper().rjust(width), end=" ")
+        print(bin(i)[2:].rjust(width))
+
+if __name__ == '__main__':
+    n = int(input())
+    print_formatted(n)
