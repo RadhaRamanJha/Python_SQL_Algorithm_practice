@@ -48,3 +48,19 @@ if __name__ == "__main__":
         print(res)
 
 # } Driver Code Ends
+
+## Given an array a of size 'n', for each element ai in the array, determine there exists another element in array that is 
+## precisisly one less than or one greater than ai, return a binary string of size n, where ith character is 1 if such element 
+## exists for ai else 0
+
+
+class Solution:
+    def consecutiveVal(self, n : int, a : List[int]) -> str:
+        return_str = ""
+        check_set = set(a)
+        for i in range(len(a)):
+            if (a[i]+1 in check_set) or (a[i]-1 in check_set):
+                return_str += '1'
+            else:
+                return_str += '0'
+        return return_str
