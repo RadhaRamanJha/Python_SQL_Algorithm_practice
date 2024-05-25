@@ -23,3 +23,28 @@ def is_palindrome3(w):
         right -=1
     return True
 print(is_palindrome3("A man, a plan, a canal. Panama!"))
+
+## Given a string S, the task is to determine is there exists anoither string that is an anagram of S
+## An anagram is a word or phrase formaed by rearranging the letters of another word or phrase
+
+class Solution:
+    def doesExists(self, S : str) -> str:
+        if S[::-1] != S:
+            return 'YES'
+        else:
+            return 'NO'
+        
+#{ 
+ # Driver Code Starts
+if __name__ == "__main__":
+    t = int(input())
+    for _ in range(t):
+
+        S = (input())
+
+        obj = Solution()
+        res = obj.doesExists(S)
+
+        print(res)
+
+# } Driver Code Ends
