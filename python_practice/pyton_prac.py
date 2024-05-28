@@ -181,3 +181,25 @@ def print_formatted(number):
 if __name__ == '__main__':
     n = int(input())
     print_formatted(n)
+"""
+The problem involves generating all possible permutations of a given string of length n in lexicographic sorted order.
+ Given a string S and an integer k, the task is to print all possible permutations of length k from the string S. The output should list each permutation on a new line.
+
+"""
+from itertools import permutations
+prompt = list(input().split())
+results = list(permutations(str(prompt[0]), r=int(prompt[1])))
+for res in sorted(results):
+    print("".join(res))
+
+"""
+The problem involves generating the Cartesian product of multiple input iterables using the itertools.product function.
+Given two lists, A and B, the task is to print all possible pairs (Cartesian product) formed by taking an element from A and an element from B. 
+The output should display each pair on a single line in lexicographic sorted order.
+"""
+from itertools import product
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+products = product(a, b)
+for item in products:
+    print(item, end=" ")
