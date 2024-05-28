@@ -760,4 +760,28 @@ WHERE
         FROM
             delivery
         GROUP BY customer_id);
+/*
+Amber's conglomerate corporation acquired new companies, each with a specific hierarchy.
+You need to write a query to print the company_code, founder name, total number of lead managers, senior managers, managers, and employees, ordered by company_code. 
+The company_code should be sorted lexicographically.
+*/
+SELECT 
+    company.company_code,
+    company.founder,
+    COUNT(DISTINCT lead_manager.lead_manager_code),
+    COUNT(DISTINCT senior_manager.senior_manager_code),
+    COUNT(DISTINCT manager.manager_code),
+    COUNT(DISTINCT employee.employee_code)
+FROM
+    company
+        INNER JOIN
+    lead_manager ON company.company_code = lead_manager.company_code
+        INNER JOIN
+    senior_manager ON lead_manager.company_code = senior_manager.company_code
+        INNER JOIN
+    manager ON senior_manager.company_code = manager.company_code
+        INNER JOIN
+    employee ON manager.company_code = employee.company_code
+GROUP BY company.company_code , company.founder
+ORDER BY company.company_code;
 
