@@ -13,9 +13,9 @@ def is_palindrome3(w):
     special_char_set = {' ','.',',','!'}
     left, right = 0, len(w)-1
     while left < right:
-        while left < right and w[left] in special_char_set:
+        while w[left] in special_char_set:
             left += 1
-        while left < right and w[right] in special_char_set:
+        while w[right] in special_char_set:
             right -= 1
         if w[left].lower() != w[right].lower():
             return False
