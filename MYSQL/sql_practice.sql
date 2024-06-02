@@ -795,4 +795,24 @@ SELECT
     ABS(FORMAT(MAX(lat_n) - MIN(lat_n), 4)) + ABS(FORMAT(MAX(long_w) - MIN(long_w), 4))
 FROM
     station;
+/*
+ given three tables: Students, Friends and Packages. Students contains two columns: ID and Name. 
+ Friends contains two columns: ID and Friend_ID (ID of the ONLY best friend). 
+ Packages contains two columns: ID and Salary (offered salary in $ thousands per month).
+ Write a query to output the names of those students whose best friends got offered a higher salary than them. 
+ Names must be ordered by the salary amount offered to the best friends. It is guaranteed that no two students got same salary offer.
+*/
+SELECT 
+    s.name
+FROM
+    students s
+        INNER JOIN
+    friends f ON s.id = f.id
+        INNER JOIN
+    packages p1 ON f.friend_id = p1.id
+        INNER JOIN
+    packages p2 ON s.id = p2.id
+WHERE
+    p1.salary > p2.salary
+ORDER BY p1.salary;
 
