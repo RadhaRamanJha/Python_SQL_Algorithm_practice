@@ -203,3 +203,22 @@ b = list(map(int, input().split()))
 products = product(a, b)
 for item in products:
     print(item, end=" ")
+
+"""
+The problem involves managing a shoe store's inventory and fulfilling customer requests for specific shoe sizes at varying prices. 
+By utilizing collections.Counter, one can efficiently track the available shoe sizes and their counts. 
+Processing each customer's request with this counter allows calculating the total revenue earned from selling the shoes.
+"""
+number_of_shoe = int(input())
+shoe_sizes = []
+for i in input().split(" "):
+    shoe_sizes.append(int(i))
+money_earned = 0
+total_customers = int(input())
+while total_customers > 0:
+    customer_dem = input().split(" ")
+    if int(customer_dem[0]) in shoe_sizes:
+        money_earned += int(customer_dem[1])
+        shoe_sizes.remove(int(customer_dem[0]))
+    total_customers -=1
+print(money_earned)
