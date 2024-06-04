@@ -222,3 +222,27 @@ while total_customers > 0:
         shoe_sizes.remove(int(customer_dem[0]))
     total_customers -=1
 print(money_earned)
+"""
+You are asked to ensure that the first and last names of people begin with a capital letter in their passports. For example, alison heck should be capitalised correctly as Alison Heck.
+
+Given a full name, your task is to capitalize the name appropriately.
+
+Input Format
+
+A single line of input containing the full name, .
+"""
+def solve(s):
+    splitted_names = s.split()
+    cap_names = [s1.capitalize() for s1 in splitted_names]
+    return " ".join(cap_names)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = solve(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
