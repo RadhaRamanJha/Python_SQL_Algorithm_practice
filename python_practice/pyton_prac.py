@@ -246,3 +246,21 @@ if __name__ == '__main__':
     fptr.write(result + '\n')
 
     fptr.close()
+"""
+Calculate the ratio of
+sum of distimct height to
+number of distinct height
+"""
+
+def average(array):
+    array_num = len(set(array))
+    total = 0
+    for num in set(array):
+        total += num
+    return round(total/array_num, 3)
+
+if __name__ == '__main__':
+    n = int(input())
+    arr = list(map(int, input().split()))
+    result = average(arr)
+    print(result)
