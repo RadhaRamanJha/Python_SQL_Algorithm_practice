@@ -264,3 +264,11 @@ if __name__ == '__main__':
     arr = list(map(int, input().split()))
     result = average(arr)
     print(result)
+"""
+Given an input complex number convert it into 
+polar coordinates
+"""
+import cmath
+comp_num = complex(input())
+print(abs(comp_num))
+print(cmath.phase(comp_num))
