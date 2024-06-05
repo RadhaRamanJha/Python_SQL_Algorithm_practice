@@ -272,3 +272,24 @@ import cmath
 comp_num = complex(input())
 print(abs(comp_num))
 print(cmath.phase(comp_num))
+
+"""
+You are given two values a and b.
+Perform integer division and print a//b .
+
+Input Format
+
+The first line contains , the number of test cases.
+The next  lines each contain the space separated values of a and b.
+
+"""
+
+n = int(input())
+for _ in range(n):
+    try:
+        a, b = map(int, input().split())
+        print(a//b)
+    except ZeroDivisionError as e:
+        print("Error Code:", e) 
+    except ValueError as e: 
+        print("Error Code:", e)
