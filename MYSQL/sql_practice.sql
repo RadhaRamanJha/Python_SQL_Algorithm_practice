@@ -881,3 +881,33 @@ WHERE
         FROM
             employees)
 ORDER BY employee_id;
+/*
+Table: Triangle
+
++-------------+------+
+| Column Name | Type |
++-------------+------+
+| x           | int  |
+| y           | int  |
+| z           | int  |
++-------------+------+
+In SQL, (x, y, z) is the primary key column for this table.
+Each row of this table contains the lengths of three line segments.
+ 
+
+Report for every three line segments whether they can form a triangle.
+
+Return the result table in any order.
+*/
+SELECT 
+    x,
+    y,
+    z,
+    CASE
+        WHEN (x + y < z) OR (x + y = z) THEN 'No'
+        WHEN (x + z < y) OR (x + z = y) THEN 'No'
+        WHEN (y + z < x) OR (y + z = x) THEN 'No'
+        ELSE 'Yes'
+    END triangle
+FROM
+    Triangle;
