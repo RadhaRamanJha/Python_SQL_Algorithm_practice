@@ -911,3 +911,31 @@ SELECT
     END triangle
 FROM
     Triangle;
+/*
+Table: Logs
+
++-------------+---------+
+| Column Name | Type    |
++-------------+---------+
+| id          | int     |
+| num         | varchar |
++-------------+---------+
+In SQL, id is the primary key for this table.
+id is an autoincrement column.
+ 
+
+Find all numbers that appear at least three times consecutively.
+
+Return the result table in any order.
+*/    
+
+SELECT DISTINCT
+    t1.num AS ConsecutiveNums
+FROM
+    Logs t1,
+    Logs t2,
+    Logs t3
+WHERE
+    t1.id + 1 = t2.id AND t2.id + 1 = t3.id
+        AND t1.num = t2.num
+        AND t1.num = t3.num; 
