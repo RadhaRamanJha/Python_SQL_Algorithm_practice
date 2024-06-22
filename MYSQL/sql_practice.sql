@@ -938,4 +938,23 @@ FROM
 WHERE
     t1.id + 1 = t2.id AND t2.id + 1 = t3.id
         AND t1.num = t2.num
-        AND t1.num = t3.num; 
+        AND t1.num = t3.num;
+/*
+Given Students and Grades tables, write a SQL query using a JOIN to list all students with their grades and marks,
+showing NULL for students with a grade < 8 . 
+Sort the results by student name in ascending order in grade > 8 
+Sort the results by student marks in ascending order in grade < 8 
+*/
+SELECT 
+    CASE
+        WHEN g.grade < 8 THEN 'NULL'
+        ELSE s.name
+    END,
+    g.grade,
+    s.marks
+FROM
+    students s
+        INNER JOIN
+    grades g ON s.marks >= g.min_mark
+        AND g.max_mark >= s.marks
+ORDER BY Grade DESC , Name ASC , Marks ASC;
