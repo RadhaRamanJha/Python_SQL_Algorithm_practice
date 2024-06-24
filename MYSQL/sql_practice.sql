@@ -958,3 +958,16 @@ FROM
     grades g ON s.marks >= g.min_mark
         AND g.max_mark >= s.marks
 ORDER BY Grade DESC , Name ASC , Marks ASC;
+
+ # Query the median of the Northern Latitudes (LAT_N) from STATION and round your answer to 4 decimal places.
+set @row_index = -1;
+SELECT 
+    ROUND(AVG(ord_n.lat_n), 4) AS median_lat
+FROM
+    (SELECT 
+        @row_index:=@row_index + 1 AS row_index, lat_n
+    FROM
+        station
+    ORDER BY lat_n) ord_n
+WHERE
+    ord_n.row_index IN (FLOOR(@row_index / 2) , CEIL(@row_index / 2));
