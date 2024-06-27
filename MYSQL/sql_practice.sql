@@ -971,3 +971,21 @@ FROM
     ORDER BY lat_n) ord_n
 WHERE
     ord_n.row_index IN (FLOOR(@row_index / 2) , CEIL(@row_index / 2));
+/*
+Pivot the Occupation column in OCCUPATIONS so that each Name is sorted alphabetically and displayed underneath its corresponding Occupation. 
+The output column headers should be Doctor, Professor, Singer, and Actor, respectively.
+Note: Print NULL when there are no more names corresponding to an occupation.
+Input Format :- two columns name and Occupation
+*/
+
+select main_sub.Doctor, main_sub.Professor, main_sub.Singer, main_sub.Actor from(
+select sub.rn, 
+max(case when sub.Occupation = 'Doctor' then sub.name end ) 'Doctor',
+max(case when sub.Occupation = 'Professor' then sub.name end ) 'Professor',
+max(case when sub.Occupation = 'Singer' then sub.name end ) 'Singer',
+max(case when sub.Occupation = 'Actor' then sub.name end ) 'Actor'
+from (
+select o.name, o.Occupation, row_number() over(partition by o.Occupation order by o.name ) as rn 
+from occupations o 
+) as sub group by sub.rn
+) as main_sub;
