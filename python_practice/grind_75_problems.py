@@ -40,3 +40,18 @@ class Solution:
             return True
         else:
             return False
+    
+    # 3. A phrase is a palindrome if, 
+    # after converting all uppercase letters into lowercase letters and removing all non-alphanumeric characters,
+    #  it reads the same forward and backward. Alphanumeric characters include letters and numbers.
+
+    # Given a string s, return true if it is a palindrome, or false otherwise.
+
+    def isPalindrome(self, s: str) -> bool:
+        chk_str = "".join(chr for chr in s if chr.isalnum())
+        chk_str = chk_str.lower()
+        if chk_str == chk_str[::-1]:
+            return True
+        elif chk_str != chk_str[::-1]:
+            return False
+    
