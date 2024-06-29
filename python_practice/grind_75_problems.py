@@ -48,12 +48,15 @@ class Solution:
     # Given a string s, return true if it is a palindrome, or false otherwise.
 
     def isPalindrome(self, s: str) -> bool:
-        chk_str = "".join(chr for chr in s if chr.isalnum())
-        chk_str = chk_str.lower()
-        if chk_str == chk_str[::-1]:
-            return True
-        elif chk_str != chk_str[::-1]:
-            return False
+        chk_str = "".join(chr.lower() for chr in s if chr.isalnum())
+        i, j = 0, len(chk_str)-1
+        while i < j:
+            if chk_str[i] != chk_str[j]:
+                return False
+            else:
+                i+=1
+                j-=1
+        return True
     
     # 4. You are given an array prices where prices[i] is the price of a given stock on the ith day.
     # You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
