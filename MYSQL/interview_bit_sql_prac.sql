@@ -152,3 +152,22 @@ FROM
     ratings rat ON rev.reviewer_id = rat.reviewer_id
 WHERE
     rat.reviewer_stars IS NULL;
+
+/*
+Write a SQL Query to find the movie_title and name of director (first and last names combined)
+who directed a movie that casted a role as ‘SeanMaguire’.
+*/
+SELECT 
+    CONCAT(d.director_first_name,
+            d.director_last_name) AS director_name,
+    m.movie_title
+FROM
+    movies m
+        INNER JOIN
+    movies_directors ON m.movie_id = movies_directors.movie_id
+        INNER JOIN
+    directors d ON movies_directors.director_id = d.director_id
+        INNER JOIN
+    movies_cast c ON c.movie_id = m.movie_id
+WHERE
+    c.role = 'SeanMaguire';
