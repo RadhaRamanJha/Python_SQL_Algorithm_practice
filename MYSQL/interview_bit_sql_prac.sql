@@ -112,3 +112,43 @@ FROM
     INNER JOIN DATA d ON e.ID = d.ID
     GROUP BY d.type
     HAVING d.type = 'FrontEnd') AS sbuq;
+ -- 27/06/2024   
+/*
+Given 2 tables ENGINEER and DATA, query for the total count of each Type in the ENGINEER table. 
+Print the result in alphabetical order of the Type.
+
+Note: The ID columns in both tables are identical.
+*/
+
+SELECT 
+    sub.Count AS A
+FROM
+    (SELECT 
+        d.type, SUM(e.Count) AS Count
+    FROM
+        DATA d
+    INNER JOIN ENGINEER e ON d.id = e.id
+    GROUP BY d.type
+    ORDER BY d.type) AS sub;
+
+/*
+SELECT avgerage of people saved by FIREFIGHTERS where countrycode = 'PM';
+*/
+
+SELECT 
+    AVG(PeopleSaved)
+FROM
+    FIREFIGHTERS
+WHERE
+    countrycode = 'PM';
+/*
+Write a SQL Query to find the name of all reviewers who have rated their ratings with a NULL value.
+*/
+SELECT 
+    rev.reviewer_name
+FROM
+    reviewers rev
+        INNER JOIN
+    ratings rat ON rev.reviewer_id = rat.reviewer_id
+WHERE
+    rat.reviewer_stars IS NULL;
