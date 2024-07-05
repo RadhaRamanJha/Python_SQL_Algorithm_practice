@@ -327,3 +327,23 @@ while num_test_cases > 0:
     else:
         print(False)
     num_test_cases -= 1
+"""
+You are given a set A and n other sets.
+Your job is to find whether set A is a strict superset of each of the  sets.
+
+Print True, if A is a strict superset of each of the  sets. Otherwise, print False.
+
+A strict superset has at least one element that does not exist in its subset.
+
+"""
+
+super_set = set(map(int, input().split()))
+num = int(input())
+result = True
+while num:
+    chk_set = set(map(int, input().split()))
+    if not super_set.issuperset(chk_set):
+        result = False
+        break
+    num -= 1
+print(result)
