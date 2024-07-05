@@ -293,3 +293,37 @@ for _ in range(n):
         print("Error Code:", e) 
     except ValueError as e: 
         print("Error Code:", e)
+"""
+You are given two sets, A and B.
+Your job is to find whether set A is a subset of set B .
+
+If set A  is subset of set B, print True.
+If set A is not a subset of set B , print False.
+
+Input Format
+
+The first line will contain the number of test cases, .
+The first line of each test case contains the number of elements in set .
+The second line of each test case contains the space separated elements of set .
+The third line of each test case contains the number of elements in set .
+The fourth line of each test case contains the space separated elements of set .
+
+Constraints
+
+Output Format
+
+Output True or False for each test case on separate lines.
+
+"""
+
+num_test_cases = int(input())
+while num_test_cases > 0:
+    set_a_num = int(input())
+    set_a = set(map(int, input().split()))
+    set_b_num = int(input())
+    set_b = set(map(int, input().split()))
+    if (set_a_num < set_b_num) and set_a.issubset(set_b):
+        print(True)
+    else:
+        print(False)
+    num_test_cases -= 1
