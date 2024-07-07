@@ -991,7 +991,7 @@ from occupations o
 ) as main_sub;
 
 ## Write a query to print the hacker_id, name, and total score of the hackers ordered by the descending score.
-## If more than one hacker achieved the same total score, then sort the result by ascending hacker_id. Exclude all hackers with a total score of  from your result.
+## If more than one hacker achieved the same total score, then sort the result by ascending hacker_id. Exclude all hackers with a 0 total score of  from your result.
 
 SELECT 
     h.hacker_id, h.name, SUM(s.max_score) total_score
@@ -1002,3 +1002,23 @@ FROM
 GROUP BY h.hacker_id , h.name
 HAVING SUM(max_score) <> 0
 ORDER BY total_score DESC , h.hacker_id;
+-- The "Top Competitor" problem involves using the "Competitions," "Players," and "Scores" tables
+--  to find the player with the highest score in each competition.
+SELECT 
+    h.hacker_id, h.name
+FROM
+    hackers h
+        INNER JOIN
+    (SELECT 
+        s.hacker_id, COUNT(*) AS total_submissions
+    FROM
+        submissions s
+    INNER JOIN challenges c ON s.challenge_id = c.challenge_id
+    INNER JOIN difficulty d ON c.difficulty_level = d.difficulty_level
+    WHERE
+        s.score = d.score
+    GROUP BY s.hacker_id
+    HAVING COUNT(*) > 1) sub
+WHERE
+    h.hacker_id = sub.hacker_id
+ORDER BY sub.total_submissions DESC , h.hacker_id;
