@@ -438,3 +438,23 @@ for i in range(num):
     elif operation[0] == 'symmetric_difference_update':
         set_A ^= set(map(int, input().split()))
 print(sum(set_A))
+
+"""
+Task
+Read in two integers, a and b, and print three lines.
+The first line is the integer division a//b
+The second line is the result of the modulo operator: a%b.
+The third line prints the divmod of a and b .
+
+Input Format
+The first line contains the first integer, , and the second line contains the second integer, .
+
+Output Format
+Print the result as described above.
+
+"""
+a = int(input())
+b = int(input())
+for num in divmod(a, b):
+    print(num)
+print(divmod(a, b))
