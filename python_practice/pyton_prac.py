@@ -373,6 +373,7 @@ eng_stud_roll = set(map(int, input().split()))
 frc_stud_num = int(input())
 frc_stud_roll = set(map(int, input().split()))
 print(len(eng_stud_roll ^ frc_stud_roll))
+
 """
 Task
 Given 2 sets of integers, M and N, print their symmetric difference in ascending order. 
@@ -390,7 +391,6 @@ Output Format
 Output the symmetric difference integers in ascending order, one per line.
 """
 
-
 set_m_num = int(input())
 set_m = set(map(int, input().split()))
 set_n_num = int(input())
@@ -398,3 +398,43 @@ set_n = set(map(int, input().split()))
 res = sorted(list((set_m - set_n) | (set_n - set_m)))
 for num in res:
     print(num)
+
+"""
+TASK
+You are given a set A and N number of other sets. These N number of sets have to perform some specific mutation operations on set A.
+
+Your task is to execute those operations and print the sum of elements from set A.
+
+Input Format
+
+The first line contains the number of elements in set A.
+The second line contains the space separated list of elements in set A.
+The third line contains integer A, the number of other sets.
+The next 2*N lines are divided into N parts containing two lines each.
+The first line of each part contains the space separated entries of the operation name and the length of the other set.
+The second line of each part contains space separated list of elements in the other set.
+
+ 0 < len(set(A)) < 1000
+ 0 < len(otherSets) < 100
+ 0 < N < 100
+
+Output Format
+
+Output the sum of elements in set A.
+
+"""
+
+set_A_num = int(input())
+set_A = set(map(int, input().split()))
+num = int(input())
+for i in range(num):
+    operation = input().split()
+    if operation[0] == 'intersection_update':
+        set_A &= set(map(int, input().split()))
+    elif operation[0] == 'update':
+        set_A |= set(map(int, input().split()))
+    elif operation[0] == 'difference_update':
+        set_A -= set(map(int, input().split()))
+    elif operation[0] == 'symmetric_difference_update':
+        set_A ^= set(map(int, input().split()))
+print(sum(set_A))
