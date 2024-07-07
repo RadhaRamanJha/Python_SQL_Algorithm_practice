@@ -373,3 +373,28 @@ eng_stud_roll = set(map(int, input().split()))
 frc_stud_num = int(input())
 frc_stud_roll = set(map(int, input().split()))
 print(len(eng_stud_roll ^ frc_stud_roll))
+"""
+Task
+Given 2 sets of integers, M and N, print their symmetric difference in ascending order. 
+The term symmetric difference indicates those values that exist in either M or N but do not exist in both.
+
+Input Format
+
+The first line of input contains an integer, M.
+The second line contains M space-separated integers.
+The third line contains an integer, N.
+The fourth line contains N space-separated integers.
+
+Output Format
+
+Output the symmetric difference integers in ascending order, one per line.
+"""
+
+
+set_m_num = int(input())
+set_m = set(map(int, input().split()))
+set_n_num = int(input())
+set_n = set(map(int, input().split()))
+res = sorted(list((set_m - set_n) | (set_n - set_m)))
+for num in res:
+    print(num)
