@@ -73,3 +73,25 @@ class Solution:
             if current_profit > max_profit:
                 max_profit = current_profit
         return max_profit
+    
+#     Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+#     An Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the original letters exactly once.
+    
+
+    def isAnagram(self, s: str, t: str) -> bool:
+        char_num = dict()
+        for chr in s:
+            if chr in char_num:
+                char_num[chr] += 1
+            else:
+                char_num[chr] = 1
+        for chr in t:
+            if (chr in char_num) and (char_num[chr] !=0):
+                char_num[chr] -= 1
+            else:
+                return False
+        if sum(char_num.values()) == 0:
+            return True
+        else:
+            return False
