@@ -458,3 +458,38 @@ b = int(input())
 for num in divmod(a, b):
     print(num)
 print(divmod(a, b))
+
+"""
+Input Format
+
+One line of input: an integer N.
+
+Constraints
+
+0 <= N <= 15
+
+Output Format
+
+A list on a single line containing the cubes of the first N fibonacci numbers.
+
+"""
+
+cube = lambda x: x**3
+def fibonacci(n):
+    if n == 0:
+        res = []
+    elif n == 1:
+        res = [0]
+    elif n == 2:
+        res = [0, 1]
+    else:
+        i = 2
+        res = [0, 1]
+        while i < n:
+            res.append(res[-1] + res[-2])
+            i+=1
+    return res
+
+if __name__ == '__main__':
+    n = int(input())
+    print(list(map(cube, fibonacci(n))))
