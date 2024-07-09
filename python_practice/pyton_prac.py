@@ -135,6 +135,36 @@ for j in range(n-2, 0, -2):
     print(current_char.center(m, '-'))
 
 """
+Task
+
+You are given a string .
+Your task is to print all possible combinations, up to size , of the string in lexicographic sorted order.
+
+Input Format
+
+A single line containing the string 's' and integer value 'K' separated by a space.
+
+The string contains only UPPERCASE characters.
+
+Output Format
+
+Print the different combinations of string  on separate lines.
+"""
+
+from itertools import combinations
+s, K = input().split()
+
+k = int(K)
+
+result = []
+for i in range(1, k +1):
+    result.extend(combinations(sorted(s), i))
+
+for j in result:
+    print("".join(j))
+
+
+"""
 You are given a string .
 Your task is to find out if the string  contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
 
