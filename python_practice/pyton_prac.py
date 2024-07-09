@@ -102,6 +102,39 @@ def pattern_H(n:int): # n must be Odd number only .
 pattern_H(7)
 
 """
+Designed a new door mat with the following specifications:
+
+Mat size must be N X M. ( N is an odd natural number, and M is 3 times N.)
+The design should have 'WELCOME' written in the center.
+The design pattern should only use |, . and - characters.
+
+Size: 11 x 33
+    ---------------.|.---------------
+    ------------.|..|..|.------------
+    ---------.|..|..|..|..|.---------
+    ------.|..|..|..|..|..|..|.------
+    ---.|..|..|..|..|..|..|..|..|.---
+    -------------WELCOME-------------
+    ---.|..|..|..|..|..|..|..|..|.---
+    ------.|..|..|..|..|..|..|.------
+    ---------.|..|..|..|..|.---------
+    ------------.|..|..|.------------
+    ---------------.|.---------------
+
+"""
+
+n, m = list(map(int, input().split()))
+for i in range(1, n+1, 2):
+    if i < n:
+        current_char = i*'.|.'
+    else:
+        current_char = 'WELCOME'
+    print(current_char.center(m, '-'))
+for j in range(n-2, 0, -2):
+    current_char = j*'.|.'
+    print(current_char.center(m, '-'))
+
+"""
 You are given a string .
 Your task is to find out if the string  contains: alphanumeric characters, alphabetical characters, digits, lowercase and uppercase characters.
 
