@@ -95,3 +95,26 @@ class Solution:
             return True
         else:
             return False
+# Given an array of integers nums which is sorted in ascending order, and an integer target, 
+# write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
+
+# You must write an algorithm with O(log n) runtime complexity.
+
+    def search(self, nums: List[int], target: int) -> int:
+         LL_index = 0
+         UL_index = len(nums)-1
+         result = -1
+         while (LL_index <= UL_index) and (result == -1):
+             if nums[LL_index] == target:
+                 result = LL_index
+             elif nums[UL_index] == target:
+                 result = UL_index
+             else:
+                 mid = (LL_index + UL_index)//2
+                 if nums[mid] < target:
+                     LL_index = mid + 1
+                 elif nums[mid] > target:
+                     UL_index = mid - 1
+                 else:
+                     result = mid
+         return result
