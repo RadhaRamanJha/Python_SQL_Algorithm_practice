@@ -436,6 +436,24 @@ eng_stud_roll = set(map(int, input().split()))
 frc_stud_num = int(input())
 frc_stud_roll = set(map(int, input().split()))
 print(len(eng_stud_roll ^ frc_stud_roll))
+"""
+Task
+
+You are given a date. Your task is to find what the day is on that date.
+
+Input Format
+
+A single line of input containing the space separated month, day and year, respectively, in MM DD YYYY   format.
+
+Output Format
+
+Output the correct day in capital letters.
+"""
+import calendar
+[month, date, year] = list(map(int, input().split()))
+week_day = calendar.weekday(year, month, date)
+correct_day = calendar.day_name[week_day]
+print(correct_day.upper())
 
 """
 Task
