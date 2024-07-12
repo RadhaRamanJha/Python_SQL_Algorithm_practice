@@ -1022,3 +1022,14 @@ FROM
 WHERE
     h.hacker_id = sub.hacker_id
 ORDER BY sub.total_submissions DESC , h.hacker_id;
+-- Two pairs (X1, Y1) and (X2, Y2) are said to be symmetric pairs if X1 = Y2 and X2 = Y1.
+
+-- Write a query to output all such symmetric pairs in ascending 
+-- order by the value of X. List the rows such that X1 ≤ Y1.
+with sub as (
+    select x, y, row_number() over(order by x, y ) as num
+    from functions )
+select distinct s1.x, s1.y
+from sub s1 inner join sub s2 on s1.x = s2.y and s1.y = s2.x
+where s1.x <= s1.y and s1.num != s2.num
+order by s1.x;
