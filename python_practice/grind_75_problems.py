@@ -99,7 +99,7 @@ class Solution:
 # write a function to search target in nums. If target exists, then return its index. Otherwise, return -1.
 
 # You must write an algorithm with O(log n) runtime complexity.
-
+# Iteration
     def search(self, nums: List[int], target: int) -> int:
          LL_index = 0
          UL_index = len(nums)-1
@@ -118,3 +118,21 @@ class Solution:
                  else:
                      result = mid
          return result
+    
+## Recursion 
+    def is_mid_target(self, low, high, target, nums):
+        if low > high:
+            return -1
+        else:
+            mid = (low + high) // 2
+            if nums[mid] == target:
+                return mid
+            elif nums[mid] > target:
+                return self.is_mid_target(low, mid-1, target, nums)
+            else:
+                return self.is_mid_target(mid+1, high, target, nums)
+
+    def search(self, nums: List[int], target: int) -> int:
+        low = 0
+        high = len(nums) - 1
+        return self.is_mid_target(low, high, target, nums)
