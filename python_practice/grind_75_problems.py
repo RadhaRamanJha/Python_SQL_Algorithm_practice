@@ -136,3 +136,49 @@ class Solution:
         low = 0
         high = len(nums) - 1
         return self.is_mid_target(low, high, target, nums)
+    
+# Implement a first in first out (FIFO) queue using only two stacks. The implemented queue should support all the functions of a normal queue (push, peek, pop, and empty).
+
+# Implement the MyQueue class:
+
+# void push(int x) Pushes element x to the back of the queue.
+# int pop() Removes the element from the front of the queue and returns it.
+# int peek() Returns the element at the front of the queue.
+# boolean empty() Returns true if the queue is empty, false otherwise.
+# Notes:
+
+# You must use only standard operations of a stack, which means only push to top, peek/pop from top, size, and is empty operations are valid.
+# Depending on your language, the stack may not be supported natively. You may simulate a stack using a list or deque (double-ended queue) as long as you use only a stack's standard operations.
+    
+class MyQueue:
+
+    def __init__(self):
+        self.push_stack = []
+        self.pop_stack = []
+
+    def push(self, x: int) -> None:
+        while len(self.pop_stack) != 0:
+            pending_item = self.pop_stack.pop()
+            self.push_stack.append(pending_item)
+        self.push_stack.append(x)
+
+    def pop(self) -> int:
+        
+        while len(self.push_stack) != 0:
+            current_item = self.push_stack.pop()
+            self.pop_stack.append(current_item)
+        current_poped = self.pop_stack.pop()
+        return current_poped
+
+    def peek(self) -> int:
+        while len(self.push_stack) != 0:
+            current_item = self.push_stack.pop()
+            self.pop_stack.append(current_item)
+        return self.pop_stack[-1]
+        
+
+    def empty(self) -> bool:
+        if len(self.push_stack) + len(self.pop_stack) == 0:
+            return True
+        else:
+            return False
