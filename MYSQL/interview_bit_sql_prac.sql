@@ -171,3 +171,4 @@ FROM
     movies_cast c ON c.movie_id = m.movie_id
 WHERE
     c.role = 'SeanMaguire';
+
