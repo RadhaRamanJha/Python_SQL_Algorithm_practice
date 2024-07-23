@@ -84,7 +84,7 @@ having f.title REGEXP '^A.*R$'
 ORDER BY f.title;
 
 # 2. Query for all actors of film having more than 11 actors in it
-# Final Query Using CTE -- using where clause to filter the film title
+# Final Query Using CTE 
 with cte as (
 SELECT 
         a.actor_id,
