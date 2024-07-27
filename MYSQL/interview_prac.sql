@@ -118,3 +118,15 @@ FROM
 GROUP BY f.title
 HAVING SUM(p.amount) > 200
 ORDER BY SUM(p.amount) DESC;
+
+with Hacker_Challenge_count as (
+select h.hacker_id, count(c.challenge_id) as Challenge_count
+    from hackers h join challenges c on h.hacker_id = c.hacker_id 
+    group by h.hacker_id ), Count_of_Challenge_tie as(select hcc.Challenge_count, count(hcc.Challenge_count) as tie_num
+from Hacker_Challenge_count hcc
+group by hcc.Challenge_count), max_challenges as (select max(Challenge_count) as max_challenge from Hacker_Challenge_count),
+required_challenge_count as (select cct.Challenge_count from Count_of_Challenge_tie cct where cct.tie_num =1)
+select h.hacker_id, h.name, hcc.Challenge_count
+from hackers h join Hacker_Challenge_count hcc on h.hacker_id = hcc.hacker_id
+where hcc.Challenge_count in (select max_challenge from max_challenges union select Challenge_count from required_challenge_count)
+order by hcc.Challenge_count desc, h.hacker_id;
