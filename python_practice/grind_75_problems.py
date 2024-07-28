@@ -190,7 +190,6 @@ class MyQueue:
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         if root is not None:
             temp = root.left
@@ -199,3 +198,25 @@ class Solution:
             Solution.invertTree(self, root.left)
             Solution.invertTree(self, root.right)
         return root
+    
+## You are given the heads of two sorted linked lists list1 and list2.
+# Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+# Return the head of the merged linked list.
+
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+        elif list1.val > list2.val:
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
+        else:
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
