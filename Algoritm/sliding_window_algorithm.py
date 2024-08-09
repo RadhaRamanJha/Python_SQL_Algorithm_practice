@@ -44,3 +44,10 @@ def count_anagram(text, word):
     return anagram_count
 print(count_anagram('gotxxotgxdogt', 'got'))
 print(count_anagram('otgotxxotgxdogto', 'got'))
+
+# Alternate solution :- 
+def  count_anagram_new(text, word):
+    chk_ana, anagram_count = "",0
+    for i in range(len(word)):
+        chk_ana += text[i]
+    
