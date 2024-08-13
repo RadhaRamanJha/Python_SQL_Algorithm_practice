@@ -66,4 +66,10 @@ class open_address_HashTable():
             raise RuntimeError("Table is Full")
         
         self.table[hash_code] = Entry(key, value)
-        self.N += 1
+        self.Key_numbers += 1
+
+    # Iterator for open addressing Hash table
+    def __iter__(self):
+        for entry in self.table:
+            if entry:
+                yield (entry.key, entry.value)

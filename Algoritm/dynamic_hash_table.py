@@ -38,5 +38,10 @@ class DynamicHashtable():
         self.table = temp_table.table
         self.size = temp_table.size
         self.threshold = self.load_factor * self.size
-    
-    
+
+    # Iterate over table for separate chaining hash table
+    def __iter__(self):
+        for entry in self.table:
+            while entry:
+                yield (entry.key, entry.value)
+                entry = entry.next
