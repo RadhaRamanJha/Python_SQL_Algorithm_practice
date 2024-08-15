@@ -220,3 +220,32 @@ class MyQueue:
         else:
             list1.next = self.mergeTwoLists(list1.next, list2)
             return list1
+
+# Given the head of a singly linked list, return the middle node of the linked list.
+
+# If there are two middle nodes, return the second middle node.
+
+# approach - 1 
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        count = 0
+        ll_start = head
+        while head is not None:
+            head = head.next
+            count += 1
+        count_to_mid = count // 2
+        while count_to_mid != 0 :
+            ll_start = ll_start.next
+            count_to_mid -= 1
+        return ll_start
+
+# approach - 2
+    def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        count = 0
+        ll_toEnd = head
+        ll_toMid = head
+        while ll_toEnd is not None:
+            ll_toEnd = ll_toEnd.next
+            if ll_toEnd is not None:
+                ll_toEnd = ll_toEnd.next
+                ll_toMid = ll_toMid.next
+        return ll_toMid
