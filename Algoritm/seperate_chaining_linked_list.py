@@ -2,7 +2,8 @@ class LinkedEntry:
     def __init__(self, key, value, rest = None):
         self.key = key
         self.value = value
-        self.next = rest      # optional parameter which allows a newly created to to get linked directly to the list which is already pointed to by rest
+        self.next = rest      # optional parameter which allows a newly created key value pair
+                              # to get linked directly to the list which is already pointed to by rest
 
 # Seperate Chaining implementation of Hash Table
 class HashTable():
