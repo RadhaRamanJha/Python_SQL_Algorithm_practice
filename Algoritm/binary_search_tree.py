@@ -38,6 +38,7 @@ class BinaryTree:
         return False
     
     def _remove_min(self, node):
+        """Helper funcction to remove the minimum value"""
         if node.left is None:
             return node.right
         node.left = self._remove_min(node.left)
@@ -59,7 +60,7 @@ class BinaryTree:
         else: 
             if node.left is None: 
                 return node.right
-             
+            
             if node.right is None: 
                 return node.left
             
